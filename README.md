@@ -11,7 +11,7 @@ despues de haber instalado git en tu ordenador, abres una terminal de comandos
 navegas hacia la direccion donde quieres que se guarde el proyecto y escribes el siguiente codigo:
 
 ```
-git clone https://github.com/SalimVazquez/Practice-ES6-CS.git
+git clone https://github.com/SalimVazquez/MQTT-CS.git
 ```
 
 Listo
@@ -27,26 +27,68 @@ Escribir el siguiente comando
 ```
 npm install
 ```
-
-Luego, escribir los siguientes comandos
-```
--> npm install -g typescript
--> npm install -g nodemon
-```
-
-Por ultimo necesitas crear la conversión a JS.
-
-Para ello, usamos el comando
-```
-tsc --init
-```
-Creara un archivo llamado "tsconfig.json" en la ruta raíz del proyecto.
-
-Seguido de ello, tenemos que hacer el siguiente comando para levantar el servidor.
+Tenemos que hacer el siguiente comando para compilar el código JS, antes de levantar el servidor.
 ```
 tsc -w
 ```
-Lo que hace el comando es convertir todo el proyecto hecho en ES6 y pasarlo a JS.
 
+### Pre-requisitos 📋
+Tener instalado MongoDB en el ordenador
+```
+https://www.mongodb.com/download-center/community
+Version: 3.4.21
+Package: ZIP
+```
+
+Modificar variables de entorno
+```
+Variables de entorno
+  ->Path
+    ->nueva
+      ->C:\Program Files\MongoDB\Server\3.4\bin
+```
+# Necesario
+Crear carpetas en el disco C
+```
+data
+  ->db
+```
+Sin ello, no podremos levantar el servidor nunca.
+
+Levantar servicio de MongoDB en una terminal
+```
+mongod
+```
+Manejador o "interfaz de MongoDB para crear la DB
+```
+mongo
+```
+"Crearla"
+```
+use nombreDB
+```
+Generar un registro para completar la creación
+```
+db.namedb.insert({ person: "The Tea Party", asn: "nasof" })
+Ejemplo:
+db.persons.insert({ name: "example", lastName: "example" })
+```
+Listo.
+
+### Ejecutando ⚙️
+Abrimos 3 terminales de su preferencia, direccionadas en el proyecto.
+En la primer terminal, Esto levantara el servidor de MongoDB
+y esperara una conexión en el puerto 27017
+````
+mongod
+````
+En la segunda terminal, esto verificara los errores posibles en el código.
+```
+tsc -w
+```
+En la tercer terminal, esto levantara el servicio de Node, y hara la conexión y todo lo necesario.
+```
+nodemon dist
+```
 Ahora ya tienes un clon del proyecto en tu ordenador.
-
+Puedes testear en PostMan.
