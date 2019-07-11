@@ -17,23 +17,66 @@ routerPerson.get('/persons', (req:Request, res:Response) => {
       res.send(err);
     } else{
       res.json({
+        mensaje: 'GET ALL listo',
         persons,
       });
     }
   });
 });
 
-routerPerson.get('/person/:id', urlencodedParser, (req:Request, res:Response) => {
-  res.json({
-    ok: true,
-    mensaje: 'GET listo',
-    persons : Person.findById(req.params.id,(err: any, persons: any) => {
-      if(err) {
-        res.send(err);
-      } else{
-        res.send(persons);
-      }
-    }),
+routerPerson.get('/person-id/:id', urlencodedParser, (req:Request, res:Response) => {
+  console.log(req.params.id);
+  persons : Person.findById({_id:req.params.id},(err: any, persons: any) => {
+    if(err) {
+      res.send(err);
+    } else{
+      res.json({
+        mensaje: 'GET listo',
+        persons,
+      });
+    }
+  });
+});
+
+routerPerson.get('/person-name/:name', urlencodedParser, (req:Request, res:Response) => {
+  console.log(req.params.name);
+  persons : Person.find({name:req.params.name},(err: any, persons: any) => {
+    if(err) {
+      res.send(err);
+    } else{
+      res.json({
+        mensaje: "Get: "+`${req.params.name}`,
+        persons,
+      });
+    }
+  });
+});
+
+routerPerson.get('/person-ap_p/:lastName_P', urlencodedParser, (req:Request, res:Response) => {
+  console.log(req.params.lastName_P);
+  persons : Person.find({lastName_P:req.params.lastName_P},(err: any, persons: any) => {
+    if(err) {
+      res.send(err);
+    } else{
+      res.json({
+        mensaje: "Get: "+`${req.params.lastName_P}`,
+        persons,
+      });
+    }
+  });
+});
+
+routerPerson.get('/person-ap_m/:lastName_M', urlencodedParser, (req:Request, res:Response) => {
+  console.log(req.params.lastName_M);
+  persons : Person.find({lastName_M:req.params.lastName_M},(err: any, persons: any) => {
+    if(err) {
+      res.send(err);
+    } else{
+      res.json({
+        mensaje: "Get: "+`${req.params.lastName_M}`,
+        persons,
+      });
+    }
   });
 });
 

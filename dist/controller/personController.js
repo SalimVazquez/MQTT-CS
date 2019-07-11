@@ -18,23 +18,66 @@ routerPerson.get('/persons', (req, res) => {
         }
         else {
             res.json({
+                mensaje: 'GET ALL listo',
                 persons,
             });
         }
     });
 });
-routerPerson.get('/person/:id', urlencodedParser, (req, res) => {
-    res.json({
-        ok: true,
-        mensaje: 'GET listo',
-        persons: Person_1.default.findById(req.params.id, (err, persons) => {
-            if (err) {
-                res.send(err);
-            }
-            else {
-                res.send(persons);
-            }
-        }),
+routerPerson.get('/person-id/:id', urlencodedParser, (req, res) => {
+    console.log(req.params.id);
+    persons: Person_1.default.findById({ _id: req.params.id }, (err, persons) => {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json({
+                mensaje: 'GET listo',
+                persons,
+            });
+        }
+    });
+});
+routerPerson.get('/person-name/:name', urlencodedParser, (req, res) => {
+    console.log(req.params.name);
+    persons: Person_1.default.find({ name: req.params.name }, (err, persons) => {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json({
+                mensaje: "Get: " + `${req.params.name}`,
+                persons,
+            });
+        }
+    });
+});
+routerPerson.get('/person-ap_p/:lastName_P', urlencodedParser, (req, res) => {
+    console.log(req.params.lastName_P);
+    persons: Person_1.default.find({ lastName_P: req.params.lastName_P }, (err, persons) => {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json({
+                mensaje: "Get: " + `${req.params.lastName_P}`,
+                persons,
+            });
+        }
+    });
+});
+routerPerson.get('/person-ap_m/:lastName_M', urlencodedParser, (req, res) => {
+    console.log(req.params.lastName_M);
+    persons: Person_1.default.find({ lastName_M: req.params.lastName_M }, (err, persons) => {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json({
+                mensaje: "Get: " + `${req.params.lastName_M}`,
+                persons,
+            });
+        }
     });
 });
 routerPerson.post('/person-post', urlencodedParser, (req, res) => {
