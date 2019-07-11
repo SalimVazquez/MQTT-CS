@@ -47,6 +47,13 @@ Variables de entorno
     ->nueva
       ->C:\Program Files\MongoDB\Server\3.4\bin
 ```
+# Necesario
+Crear carpetas en el disco C
+```
+data
+  ->db
+```
+Sin ello, no podremos levantar el servidor nunca.
 
 Levantar servicio de MongoDB en una terminal
 ```
