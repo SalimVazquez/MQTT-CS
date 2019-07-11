@@ -1,5 +1,4 @@
 import { Router, Request, Response } from 'express';
-import { request } from 'https';
 
 const router = Router();
 
