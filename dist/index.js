@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = __importDefault(require("./classes/server"));
 const environment_1 = require("./global/environment");
+const router_1 = __importDefault(require("./routes/router"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const personController_1 = __importDefault(require("./controller/personController"));
@@ -12,8 +13,8 @@ const server = server_1.default.instance;
 server.app.use(body_parser_1.default.urlencoded({ extended: true }));
 server.app.use(body_parser_1.default.json());
 // Rutas del servidor
-// server.app.use('/',router);
-server.app.use('/', personController_1.default);
+server.app.use('/', router_1.default);
+server.app.use('/api', personController_1.default);
 // Rutas API persona
 // const app = express();
 // app.get("/persons", person.allPersons);

@@ -5,7 +5,7 @@ import * as socket from '../sockets/socket';
 import http from 'http';
 
 export default class Server {
-	
+
 	private static _instance: Server;
 	public app: express.Application;
 	public port: number;
@@ -16,8 +16,9 @@ export default class Server {
 		this.app = express();
 		this.port = SERVER_PORT;
 		this.httpServer = new http.Server(this.app);
-		
 		this.io = socketIO(this.httpServer);
+
+		this.escucharSockets();
 	}
 
 	public static get instance(){
@@ -34,8 +35,8 @@ export default class Server {
 			socket.desconectar(cliente);
 		});
 	}
-	
+
 	start(callback: Function){
-		this.httpServer.listen(this.port, callback()); 
+		this.httpServer.listen(this.port, callback());
 	}
 }

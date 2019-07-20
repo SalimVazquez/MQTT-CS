@@ -21,6 +21,7 @@ class Server {
         this.port = environment_1.SERVER_PORT;
         this.httpServer = new http_1.default.Server(this.app);
         this.io = socket_io_1.default(this.httpServer);
+        this.escucharSockets();
     }
     static get instance() {
         return this._instance || (this._instance = new this());

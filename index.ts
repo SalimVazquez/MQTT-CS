@@ -11,8 +11,8 @@ server.app.use(bodyParser.urlencoded({extended:true}));
 server.app.use(bodyParser.json());
 
 // Rutas del servidor
-// server.app.use('/',router);
-server.app.use('/',routerPerson);
+server.app.use('/',router);
+server.app.use('/api',routerPerson);
 
 // Rutas API persona
 // const app = express();
